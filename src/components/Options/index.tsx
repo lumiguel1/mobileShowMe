@@ -4,10 +4,15 @@ import { View, Text } from 'react-native';
 
 import { styles } from './styles';
 import { Option } from '../Option';
+import { FeedBackType } from '../Widget';
 
 import { feedbackTypes } from '../../utils/feedbackTypes';
 
-export function Options() {
+interface Props {
+  onFeedbackTypeChanged: (feedbackType: FeedBackType) => void;
+}
+
+export function Options({onFeedbackTypeChanged} : Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -19,7 +24,11 @@ export function Options() {
           Object
             .entries(feedbackTypes)
             .map(([key, value]) => (
-              <Option key={key} title={value.title} image={value.image}/>
+              <Option 
+                key={key} 
+                title={value.title} 
+                image={value.image} 
+                onPress={() => onFeedbackTypeChanged(key as FeedBackType)}/>
             ))
         }
       </View>

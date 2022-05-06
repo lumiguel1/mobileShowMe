@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { ChatTeardropDots } from 'phosphor-react-native';
 import { theme } from '../../theme';
@@ -16,11 +16,22 @@ import { Success } from '../Success';
 export type FeedBackType = keyof typeof feedbackTypes;
 
 function Widget() {
-  
+  const [feedbackType, setFeedbackType] = useState<FeedBackType | null>(null);
+  const [feedbackSend, setFeedbackSend] = useState(false);
+
   const bottomSheetRef = useRef<BottomSheet>(null)
 
   function handleOpen() {
     bottomSheetRef.current?.expand();
+  }
+
+  function handleRestartFeedback() {
+    setFeedbackType(null);
+    setFeedbackSend(false);
+  }
+  
+  function handleFeedbackSend() {
+    setFeedbackSend(true);
   }
 
   return (
@@ -38,8 +49,23 @@ function Widget() {
         backgroundStyle={styles.modal}
         handleIndicatorStyle={styles.indicator}
         >
-          <Form feedbackType="BUG"
-          />
+
+          {
+            feedbackSend 
+            ? 
+            <Success onSendAnotherFeedback={handleRestartFeedback}/>
+            :
+            <>
+            {
+              feedbackType 
+              ? 
+              <Form feedbackType={feedbackType} onFeedbackCancelled={handleRestartFeedback} onFeedBackSend={handleFeedbackSend}/>
+              :
+              <Options onFeedbackTypeChanged={setFeedbackType} />
+            }
+            </>
+          }
+          
 
       </BottomSheet>
     </>
