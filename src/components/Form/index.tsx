@@ -12,6 +12,8 @@ import { theme } from '../../theme';
 import { styles } from './styles';
 import { feedbackTypes } from '../../utils/feedbackTypes'
 import { FeedBackType } from '../../components/Widget';
+import { SendButton } from '../../components/SendButton';
+import { ScreenshotButton } from '../../components/ScreenshotButton';
 
 interface Props {
     feedbackType: FeedBackType;
@@ -48,6 +50,15 @@ export function Form({ feedbackType }: Props) {
             placeholderTextColor={theme.colors.text_secondary}
         >
         </TextInput>
+
+        <View style={styles.footer}>
+            <ScreenshotButton
+                onTakeshot={() => {}}
+                onRemoveShot={() => {}}
+                screenshot=""
+            />
+            <SendButton isLoading={false}/>
+        </View>
     </View>
   );
 }
