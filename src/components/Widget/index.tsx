@@ -5,6 +5,7 @@ import { theme } from '../../theme';
 import { styles } from './styles';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+import { Options } from '../Options';
 
 function Widget() {
   
@@ -23,7 +24,13 @@ function Widget() {
 
         />
       </TouchableOpacity>
-      <BottomSheet ref={bottomSheetRef} snapPoints={[1, 280]}>
+      <BottomSheet 
+        ref={bottomSheetRef} 
+        snapPoints={[1, 280]}
+        backgroundStyle={styles.modal}
+        handleIndicatorStyle={styles.indicator}
+        >
+          <Options />
 
       </BottomSheet>
     </>
