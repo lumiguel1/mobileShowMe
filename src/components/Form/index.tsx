@@ -48,8 +48,7 @@ export function Form({ feedbackType }: Props) {
             style={styles.input}
             placeholder="Conte-nos os detalhes"
             placeholderTextColor={theme.colors.text_secondary}
-        >
-        </TextInput>
+        />
 
         <View style={styles.footer}>
             <ScreenshotButton

@@ -4,7 +4,7 @@ import { theme } from '../../theme';
 export const styles = StyleSheet.create({
   container: {
       paddingHorizontal: 24,
-      alignItems: "center"
+      alignItems: 'center'
   },
   header: {
       flexDirection: 'row',
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   titleText: {
       fontSize: 20,
-      color: '#FFF',
+      color: theme.colors.text_primary,
       fontFamily: theme.fonts.medium
   },
   image: {
@@ -28,9 +28,10 @@ export const styles = StyleSheet.create({
       marginRight: 8,
   }, 
   input: {
+      width: 360,
       height: 112,
       padding: 12,
-      marginBottom: 8,
+      marginBottom: 14,
       borderRadius: 4,
       borderWidth: 1,
       borderColor: theme.colors.stroke,
