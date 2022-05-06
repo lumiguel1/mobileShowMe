@@ -48,7 +48,7 @@ export function Form({ feedbackType, onFeedbackCancelled, onFeedBackSend }: Prop
         }
 
         setSendFeedback(true);
-        const screenshotBase64 = screenshot && FileSystem.readAsStringAsync(screenshot, { encoding: 'base64' })
+        const screenshotBase64 = screenshot && await FileSystem.readAsStringAsync(screenshot, { encoding: 'base64' });
 
         try{
             await api.post('/feedbacks', {
